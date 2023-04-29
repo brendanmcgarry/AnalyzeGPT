@@ -1,0 +1,4 @@
+langchain==0.0.152
+pypandoc==1.11
+requests==2.24.0
+pdfminer.six==20221105
