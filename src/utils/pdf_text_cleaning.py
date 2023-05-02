@@ -1,11 +1,13 @@
+import re
 import platform
 
-def parse_pdf(url):
-    pdf_io = download_pdf(url)
-    raw_text = pdf_to_plaintext(pdf_io)
-    cleaned_text = clean_text(raw_text)
+def clean_text(text):
+    text = re.sub(r'\s+', ' ', text)
+    text = re.sub(r'(\w)-\s', r'\1', text)
+    text = re.sub(r' {2,}', ' ', text)
+    return text
 
+def handle_windows_encoding(text):
     if platform.system() == 'Windows':
-        cleaned_text = cleaned_text.encode('cp1252', errors='ignore').decode('cp1252')
-
-    return cleaned_text
+        text = text.encode('cp1252', errors='ignore').decode('cp1252')
+    return text
