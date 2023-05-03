@@ -1,3 +1,8 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+# TODO: Replace with a better approach.
+
 import io
 import re
 import requests
@@ -6,7 +11,7 @@ from pdfminer.converter import TextConverter
 from pdfminer.high_level import extract_text_to_fp
 from pdfminer.layout import LAParams
 
-from utils.pdf_specific_cleaning import clean_text, handle_windows_encoding
+from src.utils.pdf_text_cleaning import clean_text, handle_windows_encoding
 
 
 def download_pdf(url):

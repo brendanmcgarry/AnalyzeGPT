@@ -2,6 +2,7 @@ import re
 import platform
 
 def clean_text(text):
+    # TODO: Don't remove all newlines.
     text = re.sub(r'\s+', ' ', text)
     text = re.sub(r'(\w)-\s', r'\1', text)
     text = re.sub(r' {2,}', ' ', text)
