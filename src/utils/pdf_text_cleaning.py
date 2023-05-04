@@ -1,11 +1,16 @@
 import re
 import platform
 
+
 def clean_text(text):
-    text = re.sub(r'\s+', ' ', text)
-    text = re.sub(r'(\w)-\s', r'\1', text)
-    text = re.sub(r' {2,}', ' ', text)
+    # Replace multiple spaces with a single space
+    text = re.sub(r'\s{2,}', ' ', text)
+    
+    # Replace multiple newlines (with optional spaces or tabs) with a single newline
+    text = re.sub(r'[\n\r]+[\s\t]*[\n\r]+', '\n', text)
+    
     return text
+
 
 def handle_windows_encoding(text):
     if platform.system() == 'Windows':
